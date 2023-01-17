@@ -1,8 +1,5 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
 import { TitleH1, Paragraph } from "./index.styled";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
