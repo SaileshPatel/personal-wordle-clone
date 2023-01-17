@@ -1,9 +1,5 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
 import { TitleH1, Paragraph } from "./index.styled";
-import Letter from "../components/atoms";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
@@ -24,7 +20,6 @@ export default function Home() {
           create a React project from scratch, how to structure components, and
           how development work generally on a complex project, like Wordle.
         </Paragraph>
-        <Letter />
       </main>
     </>
   );
