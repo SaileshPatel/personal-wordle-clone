@@ -9,4 +9,5 @@ export const StyledLetterInput = styled.input`
   caret-color: transparent;
   text-align: center;
   background-color: #0101;
+  margin-left: 0.3rem;
 `;
