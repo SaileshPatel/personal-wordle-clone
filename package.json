@@ -9,7 +9,9 @@
     "lint": "next lint",
     "prettier-write": "npx prettier --write .",
     "prettier-check": "npx prettier --check .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "jest --watch",
+    "test-coverage": "jest --coverage"
   },
   "dependencies": {
     "@next/font": "13.1.1",
