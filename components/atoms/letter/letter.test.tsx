@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import Letter from "./letter";
 
-describe("WordRow", () => {
+describe("Letter", () => {
   it("should be truthy", () => {
     const renderedItem = render(<Letter />);
     expect(renderedItem).toBeTruthy();
