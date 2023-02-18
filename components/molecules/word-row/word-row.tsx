@@ -7,14 +7,15 @@ export default function WordRow({ wordSize }: TWordRowProps) {
 
   const placeLetterInWord = (letter: string, index: number) => {
     setWord([]);
-    const newWord = [...word?.slice(0, index), letter, ...word?.slice(index)];
+    const newWord = letter
+      ? [...word?.slice(0, index), letter, ...word?.slice(index)]
+      : word.filter((e, i) => {
+          return i !== index;
+        });
+
     setWord(newWord);
   };
 
-  /*
-   * TODO:
-   * Add functionality to remove letter when going back
-   */
   return (
     <>
       {[...Array(wordSize)].map((x, i) => (
