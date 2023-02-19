@@ -3,10 +3,12 @@ import { checkWordValidity } from "../../../services/dictionary-api/dictionary-a
 import Letter from "../../atoms";
 import { TWordRowProps } from "./word-row.types";
 
-export default function WordRow({ wordSize }: TWordRowProps) {
+export default function WordRow({
+  wordSize,
+  setIsWordCheckSuccessful,
+  setIsWordValid,
+}: TWordRowProps) {
   const [word, setWord] = useState<string[]>([]);
-  const [isWordValid, setIsWordValid] = useState<boolean>(false);
-  const [isWordCheckSuccessful, setIsWordCheckSuccessful] = useState<boolean>();
 
   const placeLetterInWord = (letter: string, index: number) => {
     setWord([]);
@@ -20,6 +22,7 @@ export default function WordRow({ wordSize }: TWordRowProps) {
   };
 
   const checkIfWordIsValid = async (index: number) => {
+    setIsWordCheckSuccessful(true);
     if (index === word.length - 1) {
       const response = await checkWordValidity(
         word.toString().replace(/,/g, "")
