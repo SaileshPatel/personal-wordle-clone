@@ -1,8 +1,11 @@
 import Head from "next/head";
+import { useState } from "react";
 import WordRow from "../components/molecules";
 import { TitleH1, Paragraph } from "./index.styled";
 
 export default function Home() {
+  const [isWordCheckSuccessful, setIsWordCheckSuccessful] = useState<boolean>();
+
   return (
     <>
       <Head>
@@ -21,7 +24,16 @@ export default function Home() {
           create a React project from scratch, how to structure components, and
           how development work generally on a complex project, like Wordle.
         </Paragraph>
-        <WordRow wordSize={5} />
+        {!isWordCheckSuccessful ? (
+          <Paragraph>
+            We could not check the word you entered unfortunately. Please try
+            again later.
+          </Paragraph>
+        ) : null}
+        <WordRow
+          wordSize={5}
+          setIsWordCheckSuccessful={setIsWordCheckSuccessful}
+        />
       </main>
     </>
   );
