@@ -6,7 +6,7 @@ import { TitleH1, Paragraph } from "./home.styled";
 export default function Home() {
   const [isWordCheckSuccessful, setIsWordCheckSuccessful] =
     useState<boolean>(true);
-  const [isWordValid, setIsWordValid] = useState<boolean>(false);
+  const [isWordValid, setIsWordValid] = useState<boolean>(true);
 
   return (
     <>
