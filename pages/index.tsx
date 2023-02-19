@@ -5,6 +5,7 @@ import { TitleH1, Paragraph } from "./index.styled";
 
 export default function Home() {
   const [isWordCheckSuccessful, setIsWordCheckSuccessful] = useState<boolean>();
+  const [isWordValid, setIsWordValid] = useState<boolean>(false);
 
   return (
     <>
@@ -33,6 +34,7 @@ export default function Home() {
         <WordRow
           wordSize={5}
           setIsWordCheckSuccessful={setIsWordCheckSuccessful}
+          setIsWordValid={setIsWordValid}
         />
       </main>
     </>
