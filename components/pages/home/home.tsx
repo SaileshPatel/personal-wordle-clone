@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
-import WordRow from "../../molecules/";
+import WordRow from "../../molecules/word-row";
 import { TitleH1, Paragraph, ErrorMessageDiv } from "./home.styled";
 
 export default function Home() {
