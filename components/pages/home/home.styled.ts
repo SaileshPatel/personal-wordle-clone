@@ -12,3 +12,8 @@ export const Paragraph = styled.p`
   font-family: ${paragraphFonts};
   font-size: 1.2em;
 `;
+
+export const ErrorMessageDiv = styled.div`
+  font-family: ${paragraphFonts};
+  font-size: 1.2em;
+`;
