@@ -4,6 +4,7 @@ import { TWordRowProps } from "./word-row.types";
 
 export default function WordRow({ wordSize }: TWordRowProps) {
   const [word, setWord] = useState<string[]>([]);
+  const [isWordValid, setIsWordValid] = useState<boolean>(false);
 
   const placeLetterInWord = (letter: string, index: number) => {
     setWord([]);
