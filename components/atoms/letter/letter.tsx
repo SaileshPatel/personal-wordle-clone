@@ -5,6 +5,7 @@ import { TLetterProps } from "./letter.types";
 export default function Letter({
   letterPlace,
   placeLetterInWord,
+  checkIfWordIsValid,
 }: TLetterProps) {
   const [letterEntered, setLetterEntered] = useState<string>("");
   return (
@@ -17,6 +18,11 @@ export default function Letter({
       onChange={(event) => {
         setLetterEntered(event.target.value);
         placeLetterInWord(event.target.value, letterPlace);
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Enter") {
+          checkIfWordIsValid(letterPlace);
+        }
       }}
     />
   );

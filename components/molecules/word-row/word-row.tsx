@@ -19,25 +19,34 @@ export default function WordRow({ wordSize }: TWordRowProps) {
     setWord(newWord);
   };
 
-  const checkIfWordIsValid = async (word: string[]) => {
-    const response = await checkWordValidity(word.toString());
-    if (
-      response.isWordValid?.valueOf() === undefined ||
-      response.status > 404
-    ) {
-      setIsWordValid(false);
-      setIsWordCheckSuccessful(false);
-      return;
-    }
+  const checkIfWordIsValid = async (index: number) => {
+    if (index === word.length - 1) {
+      const response = await checkWordValidity(
+        word.toString().replace(/,/g, "")
+      );
+      if (
+        response.isWordValid?.valueOf() === undefined ||
+        response.status > 404
+      ) {
+        setIsWordValid(false);
+        setIsWordCheckSuccessful(false);
+        return;
+      }
 
-    setIsWordValid(response.isWordValid);
-    setIsWordCheckSuccessful(true);
+      setIsWordValid(response.isWordValid);
+      setIsWordCheckSuccessful(true);
+    }
   };
 
   return (
     <>
       {[...Array(wordSize)].map((x, i) => (
-        <Letter key={i} letterPlace={i} placeLetterInWord={placeLetterInWord} />
+        <Letter
+          key={i}
+          letterPlace={i}
+          placeLetterInWord={placeLetterInWord}
+          checkIfWordIsValid={checkIfWordIsValid}
+        />
       ))}
     </>
   );
