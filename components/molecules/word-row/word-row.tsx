@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { checkWordValidity } from "../../../services/dictionary-api/dictionary-api";
-import Letter from "../../atoms";
+import Letter from "../../atoms/letter";
 import { TWordRowProps } from "./word-row.types";
 
 export default function WordRow({
