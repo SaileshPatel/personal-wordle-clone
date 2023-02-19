@@ -4,7 +4,8 @@ import WordRow from "../components/molecules";
 import { TitleH1, Paragraph } from "./index.styled";
 
 export default function Home() {
-  const [isWordCheckSuccessful, setIsWordCheckSuccessful] = useState<boolean>();
+  const [isWordCheckSuccessful, setIsWordCheckSuccessful] =
+    useState<boolean>(true);
   const [isWordValid, setIsWordValid] = useState<boolean>(false);
 
   return (
