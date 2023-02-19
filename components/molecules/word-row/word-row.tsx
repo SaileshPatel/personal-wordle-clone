@@ -23,6 +23,9 @@ export default function WordRow({
 
   const checkIfWordIsValid = async (index: number) => {
     if (index === word.length - 1) {
+      setIsWordValid(true);
+      setIsWordCheckSuccessful(true);
+
       const response = await checkWordValidity(
         word.toString().replace(/,/g, "")
       );
@@ -30,7 +33,7 @@ export default function WordRow({
         response.isWordValid?.valueOf() === undefined ||
         response.status > 404
       ) {
-        setIsWordValid(false);
+        setIsWordValid(true);
         setIsWordCheckSuccessful(false);
         return;
       }
