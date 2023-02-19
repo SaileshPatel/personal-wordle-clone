@@ -26,17 +26,23 @@ export default function Home() {
           create a React project from scratch, how to structure components, and
           how development work generally on a complex project, like Wordle.
         </Paragraph>
-        {!isWordCheckSuccessful ? (
-          <ErrorMessageDiv>
-            We could not check the word you entered unfortunately. Please try
-            again later.
-          </ErrorMessageDiv>
-        ) : null}
         <WordRow
           wordSize={5}
           setIsWordCheckSuccessful={setIsWordCheckSuccessful}
           setIsWordValid={setIsWordValid}
         />
+        {!isWordCheckSuccessful ? (
+          <ErrorMessageDiv>
+            We could not check the word you entered unfortunately. Please try
+            another word or try again later.
+          </ErrorMessageDiv>
+        ) : null}
+        {!isWordValid ? (
+          <ErrorMessageDiv>
+            We do not recognise the word you have entered. Please try another
+            word.
+          </ErrorMessageDiv>
+        ) : null}
       </main>
     </>
   );
