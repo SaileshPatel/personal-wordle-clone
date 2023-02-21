@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
 export type TWordRowProps = {
-  wordSize: number;
+  chosenWord: string;
   setIsWordCheckSuccessful: Dispatch<SetStateAction<boolean>>;
   setIsWordValid: Dispatch<SetStateAction<boolean>>;
 };
