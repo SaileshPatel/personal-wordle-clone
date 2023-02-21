@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { StyledLetterInput } from "./letter.styled";
-import { TLetterProps } from "./letter.types";
+import { TLetterProps, TLetterState } from "./letter.types";
 
 export default function Letter({
   letterPosition,
@@ -9,6 +9,8 @@ export default function Letter({
   chosenWordLetterPosition,
 }: TLetterProps) {
   const [letterEntered, setLetterEntered] = useState<string>("");
+  const [letterState, setLetterState] = useState<TLetterState>("Neutral");
+
   return (
     <StyledLetterInput
       aria-label="letter"
@@ -16,7 +18,7 @@ export default function Letter({
       minLength={1}
       maxLength={1}
       value={letterEntered}
-      letterState="Neutral"
+      letterState={letterState}
       onChange={(event) => {
         setLetterEntered(event.target.value);
         placeLetterInWord(event.target.value, letterPosition);

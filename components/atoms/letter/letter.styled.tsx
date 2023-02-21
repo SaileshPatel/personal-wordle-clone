@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { TStyledLetterInputProps } from "./letter.types";
 
 const size = "4rem";
 
@@ -17,9 +18,7 @@ const getBackgroundColor = (state: string) => {
   }
 };
 
-export const StyledLetterInput = styled.input<{
-  letterState: "Neutral" | "Successful" | "Unsuccessful" | "PartialSuccess";
-}>`
+export const StyledLetterInput = styled.input<TStyledLetterInputProps>`
   width: ${size};
   height: ${size};
   font-size: ${size};
