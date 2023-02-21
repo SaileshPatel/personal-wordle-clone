@@ -1,5 +1,5 @@
 export type TLetterProps = {
-  letterPlace: number;
+  letterPosition: number;
   placeLetterInWord: (letter: string, index: number) => void;
   checkIfWordIsValid: (index: number) => void;
   chosenWordLetter?: string;

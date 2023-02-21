@@ -48,7 +48,7 @@ export default function WordRow({
       {chosenWord.split("").map((letter, i) => (
         <Letter
           key={i}
-          letterPlace={i}
+          letterPosition={i}
           chosenWordLetter={letter}
           placeLetterInWord={placeLetterInWord}
           checkIfWordIsValid={checkIfWordIsValid}
