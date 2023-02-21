@@ -15,6 +15,7 @@ export default function Letter({
       minLength={1}
       maxLength={1}
       value={letterEntered}
+      letterState="Neutral"
       onChange={(event) => {
         setLetterEntered(event.target.value);
         placeLetterInWord(event.target.value, letterPlace);
