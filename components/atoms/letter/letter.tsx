@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StyledLetterInput } from "./letter.styled";
 import { TLetterProps, TLetterState } from "./letter.types";
 
@@ -6,10 +6,21 @@ export default function Letter({
   letterPosition,
   placeLetterInWord,
   checkIfWordIsValid,
-  chosenWordLetterPosition,
+  chosenWordLetter,
+  checkLetterState,
 }: TLetterProps) {
   const [letterEntered, setLetterEntered] = useState<string>("");
   const [letterState, setLetterState] = useState<TLetterState>("Neutral");
+
+  useEffect(() => {
+    if (checkLetterState) {
+      if (letterEntered == chosenWordLetter) {
+        setLetterState("Successful");
+      } else {
+        setLetterState("Unsuccessful");
+      }
+    }
+  }, [checkLetterState, chosenWordLetter, letterEntered]);
 
   return (
     <StyledLetterInput
