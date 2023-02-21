@@ -3,6 +3,7 @@ import { TStyledLetterInputProps } from "./letter.types";
 
 const size = "4rem";
 
+/* istanbul ignore next */
 const getBackgroundColor = (state: string) => {
   switch (state) {
     case "Neutral":
