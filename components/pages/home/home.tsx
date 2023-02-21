@@ -8,6 +8,8 @@ export default function Home() {
     useState<boolean>(true);
   const [isWordValid, setIsWordValid] = useState<boolean>(true);
 
+  const chosenWord: string = "LIVER";
+
   return (
     <>
       <Head>
@@ -27,7 +29,7 @@ export default function Home() {
           how development work generally on a complex project, like Wordle.
         </Paragraph>
         <WordRow
-          wordSize={5}
+          chosenWord={chosenWord}
           setIsWordCheckSuccessful={setIsWordCheckSuccessful}
           setIsWordValid={setIsWordValid}
         />
