@@ -9,6 +9,7 @@ export default function WordRow({
   setIsWordValid,
 }: TWordRowProps) {
   const [word, setWord] = useState<string[]>([]);
+  const [checkLetterState, setCheckLetterState] = useState<boolean>(false);
 
   const placeLetterInWord = (letter: string, index: number) => {
     setWord([]);
@@ -25,6 +26,7 @@ export default function WordRow({
     if (index === word.length - 1) {
       setIsWordValid(true);
       setIsWordCheckSuccessful(true);
+      setCheckLetterState(false);
 
       const response = await checkWordValidity(
         word.toString().replace(/,/g, "")
@@ -40,6 +42,7 @@ export default function WordRow({
 
       setIsWordValid(response.isWordValid);
       setIsWordCheckSuccessful(true);
+      setCheckLetterState(true);
     }
   };
 
@@ -48,10 +51,11 @@ export default function WordRow({
       {chosenWord.split("").map((letter, i) => (
         <Letter
           key={i}
-          letterPlace={i}
+          letterPosition={i}
           chosenWordLetter={letter}
           placeLetterInWord={placeLetterInWord}
           checkIfWordIsValid={checkIfWordIsValid}
+          checkLetterState={checkLetterState}
         />
       ))}
     </>
