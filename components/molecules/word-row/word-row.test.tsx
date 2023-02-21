@@ -5,7 +5,7 @@ describe("WordRow", () => {
   it("should be truthy", () => {
     const renderedItem = render(
       <WordRow
-        wordSize={5}
+        chosenWord="ABBA"
         setIsWordCheckSuccessful={jest.fn()}
         setIsWordValid={jest.fn()}
       />
@@ -17,7 +17,7 @@ describe("WordRow", () => {
     it("it should be displayed on screen", () => {
       const renderedItem = render(
         <WordRow
-          wordSize={1}
+          chosenWord="A"
           setIsWordCheckSuccessful={jest.fn()}
           setIsWordValid={jest.fn()}
         />
@@ -33,7 +33,7 @@ describe("WordRow", () => {
     it("it should not be displayed on screen", () => {
       const renderedItem = render(
         <WordRow
-          wordSize={1}
+          chosenWord="A"
           setIsWordCheckSuccessful={jest.fn()}
           setIsWordValid={jest.fn()}
         />

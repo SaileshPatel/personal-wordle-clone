@@ -4,7 +4,13 @@ import Letter from "./letter";
 describe("Letter", () => {
   it("should be truthy", () => {
     const renderedItem = render(
-      <Letter letterPlace={1} placeLetterInWord={jest.fn()} />
+      <Letter
+        letterPosition={1}
+        placeLetterInWord={jest.fn()}
+        checkIfWordIsValid={jest.fn()}
+        chosenWordLetter={"L"}
+        checkLetterState={false}
+      />
     );
     expect(renderedItem).toBeTruthy();
   });
@@ -12,7 +18,13 @@ describe("Letter", () => {
 describe("when a letter is entered", () => {
   it("should display in the text box", async () => {
     const renderedItem = render(
-      <Letter letterPlace={1} placeLetterInWord={jest.fn()} />
+      <Letter
+        letterPosition={1}
+        placeLetterInWord={jest.fn()}
+        checkIfWordIsValid={jest.fn()}
+        chosenWordLetter={"L"}
+        checkLetterState={false}
+      />
     );
     const input = renderedItem.getByLabelText("letter");
 
