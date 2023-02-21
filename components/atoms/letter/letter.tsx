@@ -13,13 +13,10 @@ export default function Letter({
   const [letterState, setLetterState] = useState<TLetterState>("Neutral");
 
   useEffect(() => {
-    if (checkLetterState) {
-      if (letterEntered == chosenWordLetter) {
-        setLetterState("Successful");
-      } else {
-        setLetterState("Unsuccessful");
-      }
-    }
+    const letterMatched =
+      letterEntered == chosenWordLetter ? "Successful" : "Unsuccessful";
+    const state = checkLetterState ? letterMatched : "Neutral";
+    setLetterState(state);
   }, [checkLetterState, chosenWordLetter, letterEntered]);
 
   return (
