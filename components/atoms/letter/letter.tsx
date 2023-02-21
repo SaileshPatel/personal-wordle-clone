@@ -6,6 +6,7 @@ export default function Letter({
   letterPlace,
   placeLetterInWord,
   checkIfWordIsValid,
+  chosenWordLetterPosition,
 }: TLetterProps) {
   const [letterEntered, setLetterEntered] = useState<string>("");
   return (

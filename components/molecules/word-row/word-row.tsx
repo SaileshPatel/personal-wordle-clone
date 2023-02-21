@@ -4,7 +4,7 @@ import Letter from "../../atoms/letter";
 import { TWordRowProps } from "./word-row.types";
 
 export default function WordRow({
-  wordSize,
+  chosenWord,
   setIsWordCheckSuccessful,
   setIsWordValid,
 }: TWordRowProps) {
@@ -14,7 +14,7 @@ export default function WordRow({
     setWord([]);
     const newWord = letter
       ? [...word?.slice(0, index), letter, ...word?.slice(index)]
-      : word.filter((e, i) => {
+      : word.filter((_e, i) => {
           return i !== index;
         });
 
@@ -45,10 +45,11 @@ export default function WordRow({
 
   return (
     <>
-      {[...Array(wordSize)].map((x, i) => (
+      {chosenWord.split("").map((letter, i) => (
         <Letter
           key={i}
           letterPlace={i}
+          chosenWordLetter={letter}
           placeLetterInWord={placeLetterInWord}
           checkIfWordIsValid={checkIfWordIsValid}
         />
