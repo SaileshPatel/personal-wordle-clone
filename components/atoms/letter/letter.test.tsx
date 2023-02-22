@@ -5,7 +5,7 @@ describe("Letter", () => {
   it("should be truthy", () => {
     const renderedItem = render(
       <Letter
-        letterPosition={1}
+        letterIndex={1}
         placeLetterInWord={jest.fn()}
         checkIfWordIsValid={jest.fn()}
         chosenWordLetter={"L"}
@@ -19,7 +19,7 @@ describe("when a letter is entered", () => {
   it("should display in the text box", async () => {
     const renderedItem = render(
       <Letter
-        letterPosition={1}
+        letterIndex={1}
         placeLetterInWord={jest.fn()}
         checkIfWordIsValid={jest.fn()}
         chosenWordLetter={"L"}

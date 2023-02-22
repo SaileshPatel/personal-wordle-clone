@@ -1,24 +1,24 @@
 import fetch from "node-fetch";
 import { TDictionaryApiResponse } from "./dictionary-api.types";
 
-export async function checkWordValidity(
+export async function getWordValidity(
   word: string
 ): Promise<TDictionaryApiResponse> {
-  const result = await fetch(
+  const response = await fetch(
     `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`,
     {
       method: "GET",
     }
   );
 
-  if (result.status > 404) {
+  if (response.status > 404) {
     return {
-      status: result.status,
+      status: response.status,
     };
   }
 
   return {
-    status: result.status,
-    isWordValid: result.ok,
+    status: response.status,
+    isWordValid: response.ok,
   };
 }

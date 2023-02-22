@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { checkWordValidity } from "../../../services/dictionary-api/dictionary-api";
+import { getWordValidity } from "../../../services/dictionary-api/dictionary-api";
 import Letter from "../../atoms/letter";
 import { TWordRowProps } from "./word-row.types";
 
@@ -8,39 +8,43 @@ export default function WordRow({
   setIsWordCheckSuccessful,
   setIsWordValid,
 }: TWordRowProps) {
-  const [word, setWord] = useState<string[]>([]);
+  const [enteredWord, setEnteredWord] = useState<string[]>([]);
   const [checkLetterState, setCheckLetterState] = useState<boolean>(false);
 
-  const placeLetterInWord = (letter: string, index: number) => {
-    setWord([]);
-    const newWord = letter
-      ? [...word?.slice(0, index), letter, ...word?.slice(index)]
-      : word.filter((_e, i) => {
-          return i !== index;
+  const placeLetterInWord = (
+    letterToInsert: string,
+    insertedLetterIndex: number
+  ) => {
+    setEnteredWord([]);
+    const newWord = letterToInsert
+      ? [
+          ...enteredWord.slice(0, insertedLetterIndex),
+          letterToInsert,
+          ...enteredWord.slice(insertedLetterIndex),
+        ]
+      : enteredWord.filter((_e, i) => {
+          return i !== insertedLetterIndex;
         });
 
-    setWord(newWord);
+    setEnteredWord(newWord);
   };
 
-  const checkIfWordIsValid = async (index: number) => {
-    if (index === word.length - 1) {
+  const checkIfWordIsValid = async (letterIndex: number) => {
+    if (letterIndex === chosenWord.length - 1) {
       setIsWordValid(true);
       setIsWordCheckSuccessful(true);
       setCheckLetterState(false);
 
-      const response = await checkWordValidity(
-        word.toString().replace(/,/g, "")
-      );
-      if (
-        response.isWordValid?.valueOf() === undefined ||
-        response.status > 404
-      ) {
+      const wholeEnteredWord = enteredWord.toString().replace(/,/g, "");
+
+      const wordCheck = await getWordValidity(wholeEnteredWord);
+      if (wordCheck.isWordValid === undefined || wordCheck.status > 404) {
         setIsWordValid(true);
         setIsWordCheckSuccessful(false);
         return;
       }
 
-      setIsWordValid(response.isWordValid);
+      setIsWordValid(wordCheck.isWordValid);
       setIsWordCheckSuccessful(true);
       setCheckLetterState(true);
     }
@@ -48,10 +52,10 @@ export default function WordRow({
 
   return (
     <>
-      {chosenWord.split("").map((letter, i) => (
+      {chosenWord.split("").map((letter, index) => (
         <Letter
-          key={i}
-          letterPosition={i}
+          key={index}
+          letterIndex={index}
           chosenWordLetter={letter}
           placeLetterInWord={placeLetterInWord}
           checkIfWordIsValid={checkIfWordIsValid}
