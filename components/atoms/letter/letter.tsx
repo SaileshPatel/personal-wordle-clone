@@ -3,7 +3,7 @@ import { StyledLetterInput } from "./letter.styled";
 import { TLetterProps, TLetterState } from "./letter.types";
 
 export default function Letter({
-  letterPosition,
+  letterIndex,
   placeLetterInWord,
   checkIfWordIsValid,
   chosenWordLetter,
@@ -29,11 +29,11 @@ export default function Letter({
       letterState={letterState}
       onChange={(event) => {
         setLetterEntered(event.target.value);
-        placeLetterInWord(event.target.value, letterPosition);
+        placeLetterInWord(event.target.value, letterIndex);
       }}
       onKeyDown={(event) => {
         if (event.key === "Enter") {
-          checkIfWordIsValid(letterPosition);
+          checkIfWordIsValid(letterIndex);
         }
       }}
     />
