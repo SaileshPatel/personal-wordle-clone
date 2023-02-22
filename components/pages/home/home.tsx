@@ -32,7 +32,7 @@ export default function Home() {
           >
             freeDictionaryAPI service
           </a>{" "}
-          to check whether an entered word is a valid word. .
+          to check whether an entered word is a valid word or not.
         </Paragraph>
         <WordRow
           chosenWord={chosenWord}
