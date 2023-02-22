@@ -11,16 +11,19 @@ export default function WordRow({
   const [enteredWord, setEnteredWord] = useState<string[]>([]);
   const [checkLetterState, setCheckLetterState] = useState<boolean>(false);
 
-  const placeLetterInWord = (letterToInsert: string, index: number) => {
+  const placeLetterInWord = (
+    letterToInsert: string,
+    insertedLetterIndex: number
+  ) => {
     setEnteredWord([]);
     const newWord = letterToInsert
       ? [
-          ...enteredWord.slice(0, index),
+          ...enteredWord.slice(0, insertedLetterIndex),
           letterToInsert,
-          ...enteredWord.slice(index),
+          ...enteredWord.slice(insertedLetterIndex),
         ]
       : enteredWord.filter((_e, i) => {
-          return i !== index;
+          return i !== insertedLetterIndex;
         });
 
     setEnteredWord(newWord);
