@@ -1,4 +1,4 @@
-import { checkWordValidity } from "./dictionary-api";
+import { getWordValidity } from "./dictionary-api";
 import fetch from "node-fetch";
 
 const { Response } = jest.requireActual("node-fetch");
@@ -6,7 +6,7 @@ const { Response } = jest.requireActual("node-fetch");
 jest.mock("node-fetch", () => jest.fn());
 
 describe("dictionaryApi", () => {
-  describe("checkWordValidity", () => {
+  describe("getWordValidity", () => {
     it("should return isValid as true when status is 200", async () => {
       const expectedResponse = { status: 200 };
       (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce(
@@ -15,7 +15,7 @@ describe("dictionaryApi", () => {
         })
       );
 
-      const result = await checkWordValidity("word");
+      const result = await getWordValidity("word");
 
       expect(result.status).toBe(200);
       expect(result.isWordValid).toBeTruthy();
@@ -29,7 +29,7 @@ describe("dictionaryApi", () => {
         })
       );
 
-      const result = await checkWordValidity("word");
+      const result = await getWordValidity("word");
 
       expect(result.status).toBe(404);
       expect(result.isWordValid).toBeFalsy();
@@ -43,7 +43,7 @@ describe("dictionaryApi", () => {
         })
       );
 
-      const result = await checkWordValidity("ahaha");
+      const result = await getWordValidity("ahaha");
 
       expect(result).not.toHaveProperty("isWordValid");
     });

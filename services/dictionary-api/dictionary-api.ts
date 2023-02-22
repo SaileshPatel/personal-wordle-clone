@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { TDictionaryApiResponse } from "./dictionary-api.types";
 
-export async function checkWordValidity(
+export async function getWordValidity(
   word: string
 ): Promise<TDictionaryApiResponse> {
   const result = await fetch(

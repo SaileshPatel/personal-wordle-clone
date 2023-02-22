@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { checkWordValidity } from "../../../services/dictionary-api/dictionary-api";
+import { getWordValidity } from "../../../services/dictionary-api/dictionary-api";
 import Letter from "../../atoms/letter";
 import { TWordRowProps } from "./word-row.types";
 
@@ -37,7 +37,7 @@ export default function WordRow({
 
       const wholeWord = enteredWord.toString().replace(/,/g, "");
 
-      const wordCheck = await checkWordValidity(wholeWord);
+      const wordCheck = await getWordValidity(wholeWord);
       if (
         wordCheck.isWordValid?.valueOf() === undefined ||
         wordCheck.status > 404
