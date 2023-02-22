@@ -29,8 +29,8 @@ export default function WordRow({
     setEnteredWord(newWord);
   };
 
-  const checkIfWordIsValid = async (index: number) => {
-    if (index === enteredWord.length - 1) {
+  const checkIfWordIsValid = async (letterIndex: number) => {
+    if (letterIndex === chosenWord.length - 1) {
       setIsWordValid(true);
       setIsWordCheckSuccessful(true);
       setCheckLetterState(false);
