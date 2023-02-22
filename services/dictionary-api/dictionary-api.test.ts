@@ -8,9 +8,8 @@ jest.mock("node-fetch", () => jest.fn());
 describe("dictionaryApi", () => {
   describe("getWordValidity", () => {
     it("should return isValid as true when status is 200", async () => {
-      const expectedResponse = { status: 200 };
       (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce(
-        new Response(JSON.stringify(expectedResponse), {
+        new Response(JSON.stringify({}), {
           status: 200,
         })
       );
@@ -22,9 +21,8 @@ describe("dictionaryApi", () => {
     });
 
     it("should return isValid as false when status is 404", async () => {
-      const expectedResponse = {};
       (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce(
-        new Response(JSON.stringify(expectedResponse), {
+        new Response(JSON.stringify({}), {
           status: 404,
         })
       );
@@ -36,9 +34,8 @@ describe("dictionaryApi", () => {
     });
 
     it("should not return isValid when status is above 404", async () => {
-      const expectedResponse = {};
       (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce(
-        new Response(JSON.stringify(expectedResponse), {
+        new Response(JSON.stringify({}), {
           status: 429,
         })
       );
