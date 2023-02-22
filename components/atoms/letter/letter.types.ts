@@ -1,7 +1,10 @@
 export type TLetterProps = {
   letterIndex: number;
-  placeLetterInWord: (letter: string, index: number) => void;
-  checkIfWordIsValid: (index: number) => void;
+  placeLetterInWord: (
+    letterToInsert: string,
+    insertedLetterIndex: number
+  ) => void;
+  checkIfWordIsValid: (letterIndex: number) => void;
   chosenWordLetter: string;
   checkLetterState: boolean;
 };
