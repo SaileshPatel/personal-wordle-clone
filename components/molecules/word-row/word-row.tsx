@@ -8,28 +8,32 @@ export default function WordRow({
   setIsWordCheckSuccessful,
   setIsWordValid,
 }: TWordRowProps) {
-  const [word, setWord] = useState<string[]>([]);
+  const [enteredWord, setEnteredWord] = useState<string[]>([]);
   const [checkLetterState, setCheckLetterState] = useState<boolean>(false);
 
-  const placeLetterInWord = (letter: string, index: number) => {
-    setWord([]);
-    const newWord = letter
-      ? [...word?.slice(0, index), letter, ...word?.slice(index)]
-      : word.filter((_e, i) => {
+  const placeLetterInWord = (letterToInsert: string, index: number) => {
+    setEnteredWord([]);
+    const newWord = letterToInsert
+      ? [
+          ...enteredWord.slice(0, index),
+          letterToInsert,
+          ...enteredWord.slice(index),
+        ]
+      : enteredWord.filter((_e, i) => {
           return i !== index;
         });
 
-    setWord(newWord);
+    setEnteredWord(newWord);
   };
 
   const checkIfWordIsValid = async (index: number) => {
-    if (index === word.length - 1) {
+    if (index === enteredWord.length - 1) {
       setIsWordValid(true);
       setIsWordCheckSuccessful(true);
       setCheckLetterState(false);
 
       const response = await checkWordValidity(
-        word.toString().replace(/,/g, "")
+        enteredWord.toString().replace(/,/g, "")
       );
       if (
         response.isWordValid?.valueOf() === undefined ||
@@ -48,10 +52,10 @@ export default function WordRow({
 
   return (
     <>
-      {chosenWord.split("").map((letter, i) => (
+      {chosenWord.split("").map((letter, index) => (
         <Letter
-          key={i}
-          letterIndex={i}
+          key={index}
+          letterIndex={index}
           chosenWordLetter={letter}
           placeLetterInWord={placeLetterInWord}
           checkIfWordIsValid={checkIfWordIsValid}
