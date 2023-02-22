@@ -24,9 +24,15 @@ export default function Home() {
         <TitleH1>Personal Wordle Clone</TitleH1>
         <Paragraph>Welcome to this Wordle clone.</Paragraph>
         <Paragraph>
-          The main purpose of this application is to learn more about how to
-          create a React project from scratch, how to structure components, and
-          how development work generally on a complex project, like Wordle.
+          This Wordle clone is currently one row long. This project uses the{" "}
+          <a
+            href="https://github.com/meetDeveloper/freeDictionaryAPI"
+            target="_blank"
+            rel="noreferrer"
+          >
+            freeDictionaryAPI service
+          </a>{" "}
+          to check whether an entered word is a valid word. .
         </Paragraph>
         <WordRow
           chosenWord={chosenWord}
