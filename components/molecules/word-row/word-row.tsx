@@ -35,13 +35,10 @@ export default function WordRow({
       setIsWordCheckSuccessful(true);
       setCheckLetterState(false);
 
-      const wholeWord = enteredWord.toString().replace(/,/g, "");
+      const wholeEnteredWord = enteredWord.toString().replace(/,/g, "");
 
-      const wordCheck = await getWordValidity(wholeWord);
-      if (
-        wordCheck.isWordValid?.valueOf() === undefined ||
-        wordCheck.status > 404
-      ) {
+      const wordCheck = await getWordValidity(wholeEnteredWord);
+      if (wordCheck.isWordValid === undefined || wordCheck.status > 404) {
         setIsWordValid(true);
         setIsWordCheckSuccessful(false);
         return;
