@@ -35,19 +35,19 @@ export default function WordRow({
       setIsWordCheckSuccessful(true);
       setCheckLetterState(false);
 
-      const response = await checkWordValidity(
-        enteredWord.toString().replace(/,/g, "")
-      );
+      const wholeWord = enteredWord.toString().replace(/,/g, "");
+
+      const wordCheck = await checkWordValidity(wholeWord);
       if (
-        response.isWordValid?.valueOf() === undefined ||
-        response.status > 404
+        wordCheck.isWordValid?.valueOf() === undefined ||
+        wordCheck.status > 404
       ) {
         setIsWordValid(true);
         setIsWordCheckSuccessful(false);
         return;
       }
 
-      setIsWordValid(response.isWordValid);
+      setIsWordValid(wordCheck.isWordValid);
       setIsWordCheckSuccessful(true);
       setCheckLetterState(true);
     }
