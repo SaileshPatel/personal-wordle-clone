@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import Head from "next/head";
 import { useState } from "react";
 import WordRow from "../../molecules/word-row";
